@@ -1,0 +1,17 @@
+<p-image *ngIf="imageUrl" [src]="imageUrl" alt="Image" width="200"></p-image>
+<p>
+    <b>amount</b>: <span>{{userInfo.amount}}</span>
+</p>
+<p>
+    <b>date</b>: <span>{{userInfo.date | date}}</span>
+</p>
+<p>
+    <b>status</b>: <span>{{userInfo.status.label}}</span>
+</p>
+<p>
+    <b>source</b>: <span>{{userInfo.source}}</span>
+</p>
+
+<hr>
+
+<button pButton type="button" class="p-button-info m-1" label="Back" [routerLink]="['/user-list']"></button>

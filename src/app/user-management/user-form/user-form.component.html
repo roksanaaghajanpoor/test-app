@@ -1,0 +1,59 @@
+<form [formGroup]="userForm" #form="ngForm">
+    <h5 for="amount">Amount</h5>
+    <span class="p-float-label">
+        <input id="amount" type="text" pInputText formControlName="amount"
+            class="userForm.controls['amount'].invalid ? p-invalid : ''" />
+        <p *ngIf="userForm.get('amount')?.invalid && userForm.get('amount')?.errors && 
+            (userForm.get('amount')?.dirty || userForm.get('amount')?.touched || form?.submitted)"
+            class="invalid-text">
+            <small>
+                Amount is required and should be number
+            </small>
+        </p>
+    </span>
+
+    <h5 for="date">Date</h5>
+    <span class="p-float-label">
+        <p-calendar inputId="date" formControlName="date" [maxDate]="maxDateValue"></p-calendar>
+        <p *ngIf="userForm.get('date')?.invalid && userForm.get('date')?.errors && 
+        (userForm.get('date')?.dirty || userForm.get('date')?.touched || form?.submitted)" class="invalid-text">
+            <small>
+                Date is required
+            </small>
+        </p>
+    </span>
+
+    <h5 for="status">Status</h5>
+    <span class="p-float-label">
+        <p-autoComplete id="status" formControlName="status" [field]="'value'"
+            (completeMethod)="filterUserStatus($event)" [suggestions]="filteredStatus" [dropdown]="true"
+            class="invalid-text">
+            <ng-template let-userStatus pTemplate="item">
+                <div class="userStatus-item">
+                    <div>{{userStatus.label}}</div>
+                </div>
+            </ng-template>
+        </p-autoComplete>
+        <p *ngIf="userForm.get('status')?.invalid && userForm.get('status')?.errors && 
+        (userForm.get('status')?.dirty || userForm.get('status')?.touched || form?.submitted)" class="invalid-text">
+            <small>
+                Status is required
+            </small>
+        </p>
+    </span>
+
+    <h5 for="source">Source</h5>
+    <span class="p-float-label">
+        <input id="source" type="text" pInputText formControlName="source" />
+        <p *ngIf="userForm.get('source')?.invalid && userForm.get('source')?.errors && 
+        (userForm.get('source')?.dirty || userForm.get('source')?.touched || form?.submitted)" class="invalid-text">
+            <small>
+                Source is not Required and should be characters
+            </small>
+        </p>
+    </span>
+
+    <hr>
+    <button pButton type="submit" label="Back" class="p-button-info m-1" [routerLink]="'/upload-img'"></button>
+    <button pButton type="submit" label="Next" class="p-button-info m-1" (click)="save()"></button>
+</form>

@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fintranet-test';
+  // I can do this project with scss too
 }

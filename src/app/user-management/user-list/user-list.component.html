@@ -1,0 +1,21 @@
+<p-table [value]="users" responsiveLayout="scroll" selectionMode="single" dataKey="id"
+    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect()">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Source</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+        <tr [pSelectableRow]="user">
+            <td>{{user.amount}}</td>
+            <td>{{user.date | date}}</td>
+            <td>{{user.status.label}}</td>
+            <td>{{user.source}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+<button pButton type="button" class="p-button-info m-1" label="Back" (click)="back()"></button>
+<button pButton type="button" class="p-button-info m-1" label="Next" [routerLink]="['/final-step']"></button>

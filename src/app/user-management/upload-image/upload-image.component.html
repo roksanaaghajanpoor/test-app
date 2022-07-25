@@ -1,0 +1,11 @@
+<input #Image type="file" #uploader hidden (change)="handleFileInput($event)" />
+<button pButton type="button" label="Select Image" (click)="uploader.click()"></button>
+
+<div class="selected-image">
+    <p-image *ngIf="imageUrl" [src]="imageUrl" alt="Image" width="200"></p-image>
+</div>
+
+<hr>
+
+<button pButton type="button" label="Next" class="p-button-info" [disabled]="!imageUrl"
+    [routerLink]="['/user-form']"></button>
